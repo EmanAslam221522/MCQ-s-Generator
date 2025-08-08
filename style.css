@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* A light gray background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* This makes sure the content is centered vertically */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #007BFF; /* A nice blue color for the title */
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 90%;
+    max-width: 600px;
+    height: 150px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: vertical; /* Allows the user to resize the text area vertically */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #007BFF;
+    outline: none; /* Removes the default blue outline on focus */
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #0056b3; /* A darker blue on hover */
+    transform: translateY(-2px); /* Lifts the button slightly on hover */
+}
+
+button:active {
+    transform: translateY(0); /* Pushes the button down on click */
+}
+
+#outputArea {
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px dashed #007BFF; /* A dashed border for the output area */
+}
