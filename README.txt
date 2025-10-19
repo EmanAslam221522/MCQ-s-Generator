@@ -1,94 +1,174 @@
-📝 MCQ Generator using Google Gemini API
-📖 Overview
 
-The MCQ Generator is a simple web-based application that takes a block of text and automatically generates multiple-choice questions (MCQs) using Google’s Gemini API.
-It’s designed for teachers, students, and content creators who want to quickly create quizzes from learning material.
-✨ Features
 
-    📌 Text to MCQ Conversion – Paste any text, and the app creates 3 MCQs with 4 options each.
+# 🧠 MCQ Generator using Google Gemini API
 
-    ✅ Correct Answer Marking – Correct answers are marked with an asterisk *.
+## 📖 Overview
 
-    🎨 Clean & Responsive UI – Simple design using HTML & CSS.
+**MCQ Generator** is an AI-powered web application that converts any text into multiple-choice questions (MCQs) using the **Google Gemini 2.5 Flash API**.
+It helps teachers, students, and educators quickly generate quizzes from lessons, articles, or study materials.
 
-    ⚡ AI-Powered – Uses Gemini 2.5 Flash for fast and accurate question generation.
+This project demonstrates **how to integrate Google’s Gemini API** into a simple front-end web app using **HTML, CSS, and JavaScript**, while following good coding and documentation practices.
 
-    🖱 One-Click Generation – Easy-to-use "Generate MCQs" button.
+---
 
-🛠 Technologies Used
+## ✨ Key Features
 
-    HTML5 – Structure of the webpage.
+* 🧾 **Text-to-MCQ Conversion** — Converts any paragraph into 3+ MCQs with 4 options each.
+* ✅ **Correct Answer Highlighting** — Marks correct options automatically.
+* ⚡ **Powered by Google Gemini API** — Uses the `gemini-2.5-flash` model for fast and accurate question generation.
+* 🎨 **Responsive UI** — Clean and minimal interface built using HTML and CSS.
+* 🖱 **One-Click Generation** — Generate MCQs instantly with a single button click.
+* 🔐 **Secure API Key Handling** — Supports `.env` file configuration for storing sensitive keys.
 
-    CSS3 – Styling and layout.
+---
 
-    JavaScript (Vanilla) – Logic and API requests.
+## 🛠️ Technologies Used
 
-    Google Gemini API – AI-powered question generation.
+| Technology               | Purpose                                                   |
+| ------------------------ | --------------------------------------------------------- |
+| **HTML5**                | Structure of the webpage                                  |
+| **CSS3**                 | Styling and layout                                        |
+| **JavaScript (Vanilla)** | Logic, event handling, and API integration                |
+| **Google Gemini API**    | AI-based question generation                              |
+| **dotenv (optional)**    | To manage environment variables securely (for Node setup) |
 
-📂 Project Structure
+---
 
+## 📂 Project Structure
+
+```
 MCQ-Generator/
 │
-├── index.html        # Main HTML page
-├── style.css         # Stylesheet for UI
-├── script.js         # JavaScript logic and API integration
-└── README.md         # Documentation
+├── index.html           # Main web page
+├── style.css            # CSS styling for UI
+├── script.js            # JS logic and API communication
+├── .env                 # Environment variables (API key)
+├── README.md            # Project documentation
+└── assets/              # (Optional) images, icons, etc.
+```
 
-📋 Requirements
+---
 
-Before running the project, you’ll need:
+## ⚙️ Installation & Setup Guide
 
-    A Google Gemini API key (Get it from: Google AI Studio)
+Follow these steps to set up the project locally:
 
-    A modern web browser (Chrome, Firefox, Edge)
+### 1. 📥 Clone the Repository
 
-    Internet connection (API requests need it)
-
-⚙ Installation & Setup
-
-    Clone or Download this repository:
-
+```bash
 git clone https://github.com/EmanAslam221522/MCQ-s-Generator.git
 cd MCQ-s-Generator
+```
 
+---
 
-Open the script.js file and replace:
+### 2. 🔑 Create a Google Gemini API Key
 
-    const API_KEY = "YOUR_API_KEY";
+1. Visit **[Google AI Studio](https://aistudio.google.com/)**.
+2. Log in using your Google account.
+3. Navigate to **API Keys → Create new API key**.
+4. Copy the generated key — you’ll need it for the next step.
 
-    with your actual Google Gemini API key.
+---
 
-    Run the project by simply opening index.html in your browser.
+### 3. ⚙️ Create a `.env` File (Recommended)
 
-▶ Usage
+If you want to **hide your API key**, create a `.env` file in your project root and add:
 
-    Open index.html in your browser.
+```bash
+API_KEY=your_google_gemini_api_key_here
+```
 
-    Paste any text (e.g., from a lesson, book, or article) in the input box.
+> 🧩 Note:
+> Frontend-only apps can’t fully hide keys, so this step is optional unless you use a backend (like Node.js or FastAPI) to handle requests securely.
 
-    Click "Generate MCQs".
+---
 
-    Wait a few seconds – the output area will show 3 multiple-choice questions with marked correct answers.
+### 4. 💡 Configure the API Key
 
-🔑 API Configuration
+In `script.js`, replace:
 
-This project uses the Gemini 2.5 Flash model.
-The API endpoint is:
+```javascript
+const API_KEY = "YOUR_API_KEY";
+```
 
+with:
+
+```javascript
+const API_KEY = "your_google_gemini_api_key_here";
+```
+
+If you’re using Node.js with dotenv, you can import the key as:
+
+```javascript
+require('dotenv').config();
+const API_KEY = process.env.API_KEY;
+```
+
+---
+
+### 5. ▶️ Run the Application
+
+Simply open `index.html` in your browser.
+
+Or, if using VS Code:
+
+* Right-click `index.html`
+* Select **"Open with Live Server"** (for auto reload and better experience)
+
+---
+
+## 💻 Usage Instructions
+
+1. Open the application in your browser.
+2. Paste any text (paragraph, notes, or content) into the input box.
+3. Click **"Generate MCQs"**.
+4. Wait a few seconds — the app will display 3 MCQs with four options each.
+5. Correct answers will be marked with an asterisk `*`.
+
+---
+
+## 🔑 API Details
+
+**Model Used:** `gemini-2.5-flash`
+**Endpoint:**
+
+```
 https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+```
 
-Authentication is handled via:
+**Headers:**
 
-X-goog-api-key: YOUR_API_KEY
+```json
+{
+  "Content-Type": "application/json",
+  "X-Goog-Api-Key": "YOUR_API_KEY"
+}
+```
 
-📸 Example Output
+**Request Body Example:**
 
-Input Text:
+```json
+{
+  "contents": [{
+    "parts": [{
+      "text": "Generate 3 multiple choice questions from the following text: <your_text_here>"
+    }]
+  }]
+}
+```
 
-The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma.
+---
 
-Generated MCQs:
+## 📸 Example Output
 
+**Input Text:**
+
+> The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma.
+
+**Generated MCQs:**
+
+```
 1. What is at the center of the Solar System?
 A) Moon
 B) Earth
@@ -106,16 +186,53 @@ A) Cube
 B) Perfect sphere
 C) Nearly perfect sphere*
 D) Triangle
+```
 
-🐞 Troubleshooting
+---
 
-    "Please enter some text first!" – You clicked "Generate MCQs" without entering any text.
+## 🧩 Troubleshooting
 
-    "Something went wrong" – Check your API key or internet connection.
+| Problem                         | Possible Cause              | Solution                                          |
+| ------------------------------- | --------------------------- | ------------------------------------------------- |
+| “Please enter some text first!” | No input provided           | Add text before generating MCQs                   |
+| “Something went wrong”          | Invalid API response        | Check API key or console for errors               |
+| “API key not working”           | Key expired or incorrect    | Regenerate a valid key from Google AI Studio      |
+| “CORS error”                    | Running directly in browser | Use a local server (Live Server) or backend proxy |
 
-    API key errors – Ensure your key is valid and has permissions for the Gemini API.
+---
 
-📜 License
+## 📘 Tips for Improvement
 
-This project is open-source and free to use under the MIT License.
+* Add **download as PDF** option for generated MCQs.
+* Implement **backend proxy** (Node.js/FastAPI) to protect your API key.
+* Allow users to **choose number of MCQs** to generate.
+* Add **difficulty levels** (Easy, Medium, Hard).
+* Support **export to Google Forms** or **CSV**.
+
+---
+
+## 🧪 Example `.env` File (Optional)
+
+```
+# Google Gemini API Configuration
+API_KEY=AIzaSyD4exampleKey123456
+MODEL=gemini-2.5-flash
+```
+
+---
+
+## 📜 License
+
+This project is open-source and available under the **MIT License**.
+You are free to use, modify, and distribute it with proper attribution.
+
+---
+
+## 🙌 Author
+
+**👩‍💻 Eman Aslam**
+📧 Email: [eman.aslam@example.com](mailto:eman.aslam@example.com)
+🌐 GitHub: [EmanAslam221522](https://github.com/EmanAslam221522)
+💬 Contributions and suggestions are always welcome!
+
 
